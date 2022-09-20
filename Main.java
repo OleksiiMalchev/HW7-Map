@@ -1,4 +1,3 @@
-import java.io.File;
 import java.nio.file.Path;
 import java.util.List;
 
@@ -12,11 +11,12 @@ public class Main {
         FileData fileData5 = new FileData("third3", "src/files2");
         FileNavigator fileNavigator = new FileNavigator();
         fileNavigator.add(fileData);
-        fileNavigator.add(fileData1);
-        fileNavigator.add(fileData2);
         fileNavigator.add(fileData3);
+        fileNavigator.add(fileData1);
         fileNavigator.add(fileData4);
-        fileNavigator.add(Path.of("src/files2"),fileData5);
+        fileNavigator.add(fileData2);
+        System.out.println(fileNavigator);
+        fileNavigator.add(Path.of("src/files2"), fileData5);
         List<FileData> fileList = fileNavigator.find(Path.of("src/files"));
         System.out.println(fileList);
         List<FileData> listBySizeByte = fileNavigator.filterBySize((byte) 5);
@@ -24,6 +24,5 @@ public class Main {
         List<FileData> sortBySize = fileNavigator.sortBySize();
         System.out.println(sortBySize);
         fileNavigator.remove(Path.of("src/files"));
-
     }
 }
